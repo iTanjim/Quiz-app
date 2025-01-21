@@ -1,12 +1,17 @@
-// api/json-server.js
-import jsonServer from 'json-server';
-const server = jsonServer.create();
-const router = jsonServer.router('./db.json'); // Your database file
-const middlewares = jsonServer.defaults();
+import { readFileSync } from "fs";
+import path from "path";
 
-server.use(middlewares);
-server.use(router);
+export default function handler(req, res) {
+  try {
+    // Read the JSON file
+    const filePath = path.join(process.cwd(), "data", "questions.json");
+    const jsonData = readFileSync(filePath, "utf-8");
 
-export default (req, res) => {
-  server(req, res);
-};
+    // Parse and send the JSON data
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json(JSON.parse(jsonData));
+  } catch (error) {
+    console.error("Error reading the JSON file:", error);
+    res.status(500).json({ error: "Failed to load data" });
+  }
+}
