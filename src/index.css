@@ -247,6 +247,7 @@ progress::-webkit-progress-value {
 .options {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.2rem;
   margin-bottom: 3.2rem;
 }
@@ -465,21 +466,6 @@ progress::-webkit-progress-value {
   }
 }
 
-@media (min-width: 400px) and (max-width: 767.98px) {
-  .app-header {
-    position: relative;
-    writing-mode: horizontal-tb;
-    margin-bottom: 5rem;
-    padding: 1.3rem 7rem;
-  }
-  .vertLine {
-    display: none;
-  }
-  .btn-option {
-    height: 70px;
-  }
-}
-
 .btn.restart-btn:hover {
   box-shadow: none;
 }
@@ -497,5 +483,79 @@ progress::-webkit-progress-value {
     align-self: center;
     justify-self: right;
     grid-column: 2;
+  }
+}
+
+/* media queries */
+
+@media (min-width: 360px) and (max-width: 767.98px) {
+  .app-header {
+    position: relative;
+    writing-mode: horizontal-tb;
+    margin-bottom: 15rem;
+    padding: 1.3rem 7rem;
+  }
+  .vertLine {
+    display: none;
+  }
+  .btn-option {
+    height: 70px;
+    width: 300px;
+    text-align: left;
+    position: relative;
+  }
+  .btn::before {
+    content: ""; /* Empty pseudo-element for centering */
+    display: block;
+    width: 100%; /* Matches the container width */
+    text-align: center; /* Centers the first line */
+  }
+  .footer {
+    position: relative;
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    button {
+      justify-self: start;
+    }
+  }
+  .question {
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 350px;
+    h4 {
+      font-size: 1.6rem;
+      text-align: center;
+      width: 80%;
+    }
+  }
+  .btn {
+    font-size: 1.2rem;
+  }
+  .start-screen,
+  .result {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .progress {
+    left: 50%;
+    top: -15%;
+    transform: translate(-50%);
+    display: flex;
+    height: auto;
+    p {
+      font-size: 1rem;
+      width: fit-content;
+      writing-mode: horizontal-tb;
+    }
+  }
+  progress {
+    width: 200px;
+    height: 1px;
+    writing-mode: horizontal-tb;
   }
 }
